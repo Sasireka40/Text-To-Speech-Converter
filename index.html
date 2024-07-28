@@ -3,20 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TODO LIST</title>
+    <title>Text To Speech</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="todo_form">
-    <h1>Todo List</h1>
-    <div>
-        <input type="text" placeholder="Enter todo item " id="todo_input">
-        <button onclick="Add_items()">Add todo</button>
+    <div id="container">
+        <h1>Text To Speech</h1>
+        <textarea  id="texttospeak" ></textarea>
+        <button onclick="speak()">Text to Speak</button>
     </div>
-    <ul id="todo_items">
-
-    </ul>
-</div>
-<script src="script.js"></script>
+    <script>
+        var speech=new SpeechSynthesisUtterance();
+        function speak()
+        {
+            speech.text=texttospeak.value;
+            speech.rate=1;
+            speech.volume=5;
+            speech.pitch=1;
+            window.speechSynthesis.speak(speech);
+        }
+    </script>
 </body>
 </html>
